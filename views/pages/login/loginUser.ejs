@@ -1,0 +1,34 @@
+<%- include("../../partials/header") %> <%-
+include("../../partials/navigation")%>
+<div class="container d-flex justify-content-center mt-4">
+  <div class="col-xs-12 col-md-6 border p-4">
+    <h2 class="text-primary">Login a User</h2>
+
+    <hr />
+    <form action="/user/login" method="POST" novalidate>
+      <div class="form-group">
+        <label for="exampleInputEmail1">Email address</label>
+        <input type="email" name="email" class="form-control <%= errors?.email ?
+        "is-invalid" : "" %> " id="exampleInputEmail1"
+        aria-describedby="emailHelp"/>
+        <small id="fName" class="invalid-feedback">
+          <%= errors?.email %>
+        </small>
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" name="password" class="form-control <%=
+        errors?.password ? "is-invalid" : "" %> " id="password" />
+        <small id="fName" class="invalid-feedback">
+          <%= errors?.password %>
+        </small>
+      </div>
+
+      <button type="submit" class="btn btn-primary">Login User</button>
+      <a href="/" class="btn btn-warning">Cancel</a>
+    </form>
+  </div>
+</div>
+
+<%- include("../../partials/footer") %>

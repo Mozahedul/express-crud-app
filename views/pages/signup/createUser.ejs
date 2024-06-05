@@ -1,0 +1,73 @@
+<%- include("../../partials/header") %> <%-
+include("../../partials/navigation")%>
+<div class="container d-flex justify-content-center mt-4">
+  <div class="col-xs-12 col-md-6 border p-4">
+    <h2 class="text-primary">Create a User</h2>
+    <% console.log("From createUserPage Error: ", errors) %>
+    <hr />
+
+    <form action="/user/create" method="POST" novalidate>
+      <div class="form-group">
+        <label for="firstName">First Name</label>
+        <input type="text" name="firstName" class="form-control <%=
+        errors.firstName ? "is-invalid" : "" %> " id="firstName"
+        aria-describedby="emailHelp" value="<%= value.firstName ?
+        value.firstName : "" %>"/>
+        <small id="fName" class="invalid-feedback">
+          <i class="fas fa-exclamation-circle"></i> <%= errors.firstName &&
+          errors.firstName %>
+        </small>
+      </div>
+
+      <div class="form-group">
+        <label for="lastName">Last Name</label>
+        <input type="text" name="lastName" class="form-control <%=
+        errors.lastName ? "is-invalid" : "" %>" id="lastName"
+        aria-describedby="emailHelp" value="<%= value.lastName ? value.lastName
+        : "" %>"/>
+        <small id="fName" class="invalid-feedback">
+          <i class="fas fa-exclamation-circle"></i> <%= errors.lastName &&
+          errors.lastName %>
+        </small>
+      </div>
+
+      <div class="form-group">
+        <label for="exampleInputEmail1">Email address</label>
+        <input type="email" name="email" class="form-control <%= errors.email ?
+        "is-invalid" : "" %> " id="exampleInputEmail1"
+        aria-describedby="emailHelp" value="<%= value.email ? value.email : ""
+        %>"/>
+        <small id="fName" class="invalid-feedback">
+          <i class="fas fa-exclamation-circle"></i> <%= errors.email &&
+          errors.email %>
+        </small>
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" name="testPassword" class="form-control <%=
+        errors.testPassword ? "is-invalid" : "" %> " id="testPassword"
+        value="<%= value.password ? value.password : "" %>"/>
+        <small id="fName" class="invalid-feedback">
+          <i class="fas fa-exclamation-circle"></i> <%= errors.testPassword &&
+          errors.testPassword %>
+        </small>
+      </div>
+
+      <div class="form-group">
+        <label for="confirmPassword">Confirm Password</label>
+        <input type="password" name="password" class="form-control <%=
+        errors.password ? "is-invalid" : "" %> " id="confirmPassword" />
+        <small id="fName" class="invalid-feedback">
+          <i class="fas fa-exclamation-circle"></i> <%= errors.password &&
+          errors.password %>
+        </small>
+      </div>
+
+      <button type="submit" class="btn btn-primary">Create User</button>
+      <a href="/" class="btn btn-warning">Cancel</a>
+    </form>
+  </div>
+</div>
+
+<%- include("../../partials/footer") %>

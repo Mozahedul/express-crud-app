@@ -1,0 +1,75 @@
+<%- include("../../partials/header") %> <%-
+include("../../partials/navigation")%>
+<!--  -->
+<% console.log(serverUpdateError) %>
+<div class="container d-flex justify-content-center mt-4">
+  <div class="col-xs-12 col-md-6 border p-4">
+    <h2 class="text-primary">Edit a User</h2>
+    <hr />
+    <form action="/user/update/<%= data.id %>" method="POST" novalidate>
+      <div class="form-group">
+        <label for="firstName">First Name</label>
+        <input
+          type="text"
+          name="firstName"
+          value="<%= data.firstName %>"
+          class="form-control"
+          id="firstName"
+          aria-describedby="emailHelp"
+        />
+        <small id="fName" class="form-text text-danger">
+          <%- serverUpdateError.map(err=> err.firstName) %>
+        </small>
+      </div>
+
+      <div class="form-group">
+        <label for="lastName">Last Name</label>
+        <input
+          type="text"
+          name="lastName"
+          value="<%= data.lastName %>"
+          class="form-control"
+          id="lastName"
+          aria-describedby="emailHelp"
+        />
+        <small id="emailHelp" class="form-text text-danger">
+          <%- serverUpdateError.map(err=> err.lastName) %>
+        </small>
+      </div>
+
+      <div class="form-group">
+        <label for="exampleInputEmail1">Email address</label>
+        <input
+          type="email"
+          name="email"
+          value="<%= data.email %>"
+          class="form-control"
+          id="exampleInputEmail1"
+          aria-describedby="emailHelp"
+        />
+        <small id="emailHelp" class="form-text text-danger">
+          <%- serverUpdateError.map(err=> err.email) %>
+        </small>
+      </div>
+
+      <div class="form-group">
+        <label for="exampleInputPassword1">Password</label>
+        <input
+          type="password"
+          name="password"
+          value="<%= data.password %>"
+          class="form-control"
+          id="exampleInputPassword1"
+        />
+        <small id="emailHelp" class="form-text text-danger">
+          <%- serverUpdateError.map(err=> err.password) %>
+        </small>
+      </div>
+
+      <button type="submit" class="btn btn-primary">Update User</button>
+      <a href="/user/view" class="btn btn-warning">Cancel</a>
+    </form>
+  </div>
+</div>
+
+<%- include("../../partials/footer") %>

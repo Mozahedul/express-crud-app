@@ -1,0 +1,30 @@
+<%- include("../../partials/header.ejs") %> <%-
+include("../../partials/navigation") %>
+
+<!-- for checking the data object key length -->
+<% if(Object.keys(data).length > 0) { %>
+
+<div class="container mt-4">
+  <div class="jumbotron">
+    <h2>USER NAME: <%= data.firstName %> <%= data.lastName %></h2>
+    <p class="lead">EMAIL ADDRESS: <%= data.email %></p>
+    <p>PASSWORD: <%= data.password %></p>
+    <hr />
+    <a
+      class="btn btn-warning btn-sm"
+      href="/user/edit/<%= data._id %> "
+      role="button"
+      >Edit User</a
+    >
+    <a
+      class="btn btn-danger btn-sm"
+      href="/user/delete/<%= data._id %>"
+      role="button"
+      >Delete User</a
+    >
+    <a class="btn btn-secondary btn-sm" href="/user/view %>" role="button"
+      >Cancel</a
+    >
+  </div>
+</div>
+<% } %> <%- include("../../partials/footer") %>

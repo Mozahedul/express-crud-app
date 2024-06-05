@@ -1,0 +1,135 @@
+<%- include("../../partials/header") %> <%- include("../../partials/navigation")
+%>
+<!-- <script>
+      function btnRemove() {
+        document.getElementById("buttonHide").classList.add("btn-none");
+      }
+    </script> -->
+
+<div class="container d-flex flex-column justify-content-center mt-4">
+  <h2 class="text-primary mb-4">User View</h2>
+  <!-- For success message -->
+  <% if(serverSuccess && serverSuccess.length> 0) { %>
+  <div class="alert alert-success alert-dismissible fade show">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close"
+      >&times;</a
+    >
+    <strong>Success!</strong>
+    <%- serverSuccess %>
+  </div>
+
+  <!-- <div id="buttonHide" class="alert alert-success d-flex justify-content-between align-items-center" role="alert">
+          Success: <%#- serverSuccess %>
+            <button type="button" onclick="btnRemove()" class="btn btn-link btn-sm btn-close button-close"
+              aria-label="Close">
+              <span aria-hidden="true" class="text-danger close-btn-span">&times;</span>
+            </button>
+        </div> -->
+  <% } %>
+
+  <!-- For Update message -->
+  <% if(updateServer.length> 0) { %>
+
+  <div class="alert alert-success alert-dismissible fade show">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close"
+      >&times;</a
+    >
+    <strong>Success!</strong>
+    <%- updateServer %>
+  </div>
+
+  <!-- <div id="buttonHide" class="alert alert-success d-flex justify-content-between align-items-center"
+              role="alert">
+              Updated: <%#- updateServer %>
+                <button type="button" onclick="btnRemove()" class="btn btn-link btn-sm btn-close button-close"
+                  aria-label="Close">
+                  <span aria-hidden="true" class="text-danger close-btn-span">&times;</span>
+                </button>
+            </div> -->
+  <% } %>
+
+  <!-- For Delete message -->
+  <% if(serverDelete.length> 0) { %>
+  <div class="alert alert-danger alert-dismissible fade show">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close"
+      >&times;</a
+    >
+    <strong>Success!</strong>
+    <%- serverDelete %> <i class="far fa-angry"></i>
+  </div>
+
+  <!-- <div id="buttonHide" class="alert alert-danger d-flex justify-content-between align-items-center"
+                  role="alert">
+                  <%#- serverDelete %>
+                    <button type="button" onclick="btnRemove()" class="btn btn-link btn-sm btn-close button-close"
+                      aria-label="Close">
+                      <span aria-hidden="true" class="text-danger close-btn-span">&times;</span>
+                    </button>
+                </div> -->
+  <% } %>
+
+  <!-- for checking data in the database -->
+  <% if(data.length> 0) { %>
+  <table class="table table-striped table-bordered table-hover">
+    <thead class="thead-light">
+      <tr>
+        <th scope="col">SL</th>
+        <th scope="col">First Name</th>
+        <th scope="col">Last Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Password</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- loop through the data -->
+      <% data.map((element, index)=> { %>
+      <tr>
+        <th scope="row"><%= index + 1 %></th>
+        <td><%= element.firstName %></td>
+        <td><%= element.lastName %></td>
+        <td><%= element.email %></td>
+        <td><%= element.password %></td>
+        <i class="bi bi-alarm"></i>
+        <td>
+          <a
+            class="btn btn-info btn-sm"
+            href="/user/view/individual/<%= element._id %>"
+            role="button"
+            title="View User"
+            ><i class="far fa-eye"></i>
+          </a>
+          <a
+            class="btn btn-warning btn-sm"
+            href="/user/edit/<%= element._id %>"
+            role="button"
+            title="Edit User"
+            ><i class="far fa-edit"></i>
+          </a>
+          <a
+            class="btn btn-danger btn-sm"
+            href="/user/delete/<%= element._id %>"
+            role="button"
+            title="Delete User"
+            ><i class="far fa-trash-alt"></i
+          ></a>
+        </td>
+      </tr>
+      <% }) %>
+    </tbody>
+  </table>
+  <% } else { %>
+  <div class="jumbotron jumbotron-fluid">
+    <div class="container ml-4">
+      <h class="display-4 text-danger">No data in the Database!</h>
+      <p class="lead mt-2">
+        Add some data by the clicking the Button
+        <a href="/user/create" class="btn btn-primary btn-sm">Add</a>
+      </p>
+    </div>
+  </div>
+
+  <% } %>
+</div>
+
+<%- include("../../partials/footer") %>

@@ -1,0 +1,12 @@
+.btn-none {
+  display: none !important;
+}
+
+.button-close {
+  text-decoration: none !important;
+}
+
+.close-btn-span {
+  font-size: 22px;
+  background-color: red;
+}
