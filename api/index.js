@@ -3,6 +3,7 @@ const path = require("path");
 const dbRoutes = require("../routes/dbRoutes");
 const cookieParser = require("cookie-parser");
 const session = require("express-session");
+const MemoryStore = require("memorystore")(session);
 const flash = require("connect-flash");
 require("../models/dbConnection");
 // const morgan = require("morgan");
@@ -37,10 +38,13 @@ app.use(
     secret: process.env.SECRET_KEY || SECRET_KEY,
     resave: false,
     saveUninitialized: true,
-    // cookie: {
-    //   secure: false,
-    //   maxAge: 60000,
-    // },
+    cookie: {
+      maxAge: 86400000,
+    },
+    store: new MemoryStore({
+      checkPeriod: 86400000, // prune expired entries every 24h
+    }),
+    //
   })
 );
 
