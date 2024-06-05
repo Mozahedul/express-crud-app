@@ -1,11 +1,11 @@
 const express = require("express");
 const path = require("path");
-const dbRoutes = require("../routes/dbRoutes");
+const dbRoutes = require("./routes/dbRoutes");
 const cookieParser = require("cookie-parser");
 const session = require("express-session");
 const MemoryStore = require("memorystore")(session);
 const flash = require("connect-flash");
-require("../models/dbConnection");
+require("./models/dbConnection");
 // const morgan = require("morgan");
 const SECRET_KEY = "mozahedul";
 
