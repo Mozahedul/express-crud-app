@@ -50,9 +50,11 @@ app.use(
 
 app.use(flash());
 
-app.set("views", __dirname + "/views");
+// app.set("views", __dirname + "/views");
 app.set("view engine", "ejs");
 const publicDirectory = path.join(__dirname, "public");
+console.log("public directory  ==>", publicDirectory);
+
 app.use(express.static(publicDirectory));
 
 app.use(express.urlencoded({ extended: true }));
