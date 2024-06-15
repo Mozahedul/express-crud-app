@@ -67,8 +67,8 @@ app.use(express.urlencoded({ extended: true }));
 // app.use(morgan("dev"));
 app.use("/user", dbRoutes);
 app.get("/", (req, res) => {
-  // res.render("pages/index", { title: "Home Page" });
-  res.send("API is running on port 5000");
+  res.render("pages/index", { title: "Home Page" });
+  // res.send("API is running on port 5000");
 });
 app.get("*", (req, res) => {
   res.render("pages/error", {
