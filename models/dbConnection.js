@@ -1,16 +1,16 @@
 const mongoose = require("mongoose");
 
-// const uri = "mongodb://localhost:27017/school";
-const uri =
-  "mongodb+srv://softprogrammer:mozahed525@shoppingcluster.cwpyj.mongodb.net/student?retryWrites=true&w=majority&appName=shoppingCluster";
+console.log("process ==>", process.env.uri);
 
+// const uri = "mongodb://localhost:27017/school";
 const connection = async function () {
   try {
     // mongoose.set("strictQuery", false);
-    mongoose.connect(uri);
+    mongoose.connect(process.env.URI);
     console.log("DATABASE CONNECTED SUCCESSFULLY");
   } catch (error) {
     console.log(error);
+    res.send(error);
     process.exit(1);
   }
 };

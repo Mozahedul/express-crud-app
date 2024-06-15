@@ -5,12 +5,13 @@ const cookieParser = require("cookie-parser");
 const session = require("express-session");
 const MemoryStore = require("memorystore")(session);
 const flash = require("connect-flash");
+require("dotenv").config();
 require("./models/dbConnection");
 // const morgan = require("morgan");
 const SECRET_KEY = "mozahedul";
 
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 // custom middleware for
 /* function customMiddleware(req, res, next) {
